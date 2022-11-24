@@ -29,6 +29,8 @@ abstract class Hotel{
     abstract void capturar();
     abstract void mostrar();
     
+            
+}
      class Habitaciones extends Hotel {
         double tipoHab,noche,precioNoche;
         
@@ -73,6 +75,9 @@ abstract class Hotel{
             s="Precio de la habitación: "+tipoHab+"\nNoches:" +noche+"\nCosto total de noches: "+noche+"\nPrecio Total: "+(tipoHab+noche);
         }
         
+
+    }
+
         class Datos extends Hotel{
             String nombre,direccion,diaLlegada,diaSalida;
             int edad,celular;
@@ -90,6 +95,3 @@ abstract class Hotel{
                 s="Nombre del encargado: "+nombre+"Edad: "+edad+"Número de teléfono: "+celular+"Dirección: "+direccion+"Día de llegada: "+diaLlegada+"Día de salida"+diaSalida;
             }
         }
-    }
-            
-}
