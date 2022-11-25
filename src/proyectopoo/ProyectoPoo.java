@@ -15,7 +15,14 @@ public class ProyectoPoo {
     public static void main(String[] args) {
        
         Habitaciones a= new Habitaciones();
+        a.capturar();
+        a.precioHab();
+        a.precioNoche();
+
+        
         Datos da= new Datos();
+        da.capturar();
+        da.mostrar();
         
         
     }
@@ -25,57 +32,48 @@ public class ProyectoPoo {
 
 abstract class Hotel{
     String habitaciones;
-    double precioHab;
+    double precioHab,noche,precioNo;
     abstract void capturar();
-    abstract void mostrar();
-    
+
             
 }
      class Habitaciones extends Hotel {
-        double tipoHab,noche,precioNoche;
+
+        int tipoHab;
         
         public void capturar(){
-            tipoHab=Double.parseDouble(JOptionPane.showInputDialog("Elige el tipo de habitación: \n1.-Suite \n2.-Matrimonial \n3.-Individual"));
+            tipoHab=Integer.parseInt(JOptionPane.showInputDialog("Elige el tipo de habitación: \n1.-Suite \n2.-Matrimonial \n3.-Individual"));
             noche=Double.parseDouble(JOptionPane.showInputDialog("¿Cuántas noches desea quedarse?"));
    
         }
 
         double precioHab(){
-            if (tipoHab<=1){
-                tipoHab=3200;
+            switch(tipoHab){
+                case 1:
+                    tipoHab=3200;
+                    break;
+                case 2:
+                    tipoHab=2300;
+                    break;
+                case 3:
+                    tipoHab=1500;
+                    break;
+                
             }
-            else {
-                if (tipoHab<=2){
-                    tipoHab=2000;
-                }
-                else {
-                    if (tipoHab<=2){
-                        tipoHab=1500;
-                    }
-                    
-                }
-            }
-
-            return tipoHab;
+            return precioHab;
         }
 
         double precioNoche(){
                         
             if (noche<=1){
-                precioNoche=1500;
+                precioNo=1500;
     
             }
             else {
-                precioNoche=1500*noche;
+                precioNo=1500*noche;
             }
-            return noche;
+            return precioNo;
         }
-        public void mostrar(){
-            String s;
-            s="Precio de la habitación: "+tipoHab+"\nNoches:" +noche+"\nCosto total de noches: "+noche+"\nPrecio Total: "+(tipoHab+noche);
-        }
-        
-
     }
 
         class Datos extends Hotel{
@@ -92,6 +90,6 @@ abstract class Hotel{
             }
             public void mostrar(){
                 String s;
-                s="Nombre del encargado: "+nombre+"Edad: "+edad+"Número de teléfono: "+celular+"Dirección: "+direccion+"Día de llegada: "+diaLlegada+"Día de salida"+diaSalida;
+                JOptionPane.showMessageDialog(null,"Nombre del encargado: "+ nombre +"\nEdad: "+ edad +"\nNúmero de teléfono: "+ celular +"\nDirección: "+ direccion +"\nDía de llegada: "+ diaLlegada +"\nDía de salida: "+ diaSalida +"\nPrecio de la habitación: "+ precioHab +"\nNoches:" + noche +"\nCosto total de noches: "+ precioNo +"\nPrecio Total: "+(precioHab+precioNo));
             }
         }
